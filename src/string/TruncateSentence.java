@@ -16,6 +16,7 @@ public class TruncateSentence {
 			count++;
 		    if (count == k )
 		    {
+		    
 		    	break ;
 		    }
 		}
