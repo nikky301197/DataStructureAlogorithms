@@ -13,7 +13,8 @@ public class LonelyNumber {
 			int f = Collections.frequency(l, l.get(i));
 			if (f < 1) {
 				if (i == 0) { 
-
+                 a[i] = a[i]-1;
+                 a[i] = a[i]+1;
 				} 
 				else if (a.length - 1 == i) {
 
