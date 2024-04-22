@@ -1,8 +1,8 @@
 package linkedList;
 
-public class LinkedListPalindrome {
-	Node head = null;
-	Node tail = null;
+public class PalindromeLinkedList {
+	static Node head = null;
+	static Node tail = null;
 
 	class Node {
 		Integer data;
@@ -36,7 +36,7 @@ public class LinkedListPalindrome {
 		System.out.println("null");
 	}
 
-	Node findMiddleNode() {
+	static Node findMiddleNode() {
 		Node slow = head;
 		Node fast = head;
 		while (fast != null && fast.next != null) {
@@ -46,12 +46,10 @@ public class LinkedListPalindrome {
 		return slow;
 	}
 
-	Node reverseHalfLinkedList(Node midnode) {
-		Node prev = midnode;
-		Node current = midnode.next;
+	static Node reverseHalfLinkedList(Node midnode) {
+		Node prev = null;
+		Node current = midnode;
 		Node next;
-		Node newmidNode = tail;
-		tail = midnode;
 
 		while (current != null) {
 			next = current.next;
@@ -59,39 +57,36 @@ public class LinkedListPalindrome {
 			prev = current;
 			current = next;
 		}
-		tail = prev;
-		return newmidNode;
+
+		return prev;
 	}
 
-	boolean checkPalindromeOrNot() {
-		Node midNode = this.findMiddleNode();
-		Node afterReverseMidNode = reverseHalfLinkedList(midNode);
-		Node temp1 = head;
-		Node temp2 = afterReverseMidNode;
-		while (temp1 != afterReverseMidNode) {
-			if (temp1.data != temp2.data) {
+	static boolean checkPalindromeOrNot() {
+		Node midNode = findMiddleNode();
+		Node righthead = reverseHalfLinkedList(midNode);
+		Node lefthead = head;
+
+		while (lefthead != null && righthead != null) {
+			if (lefthead.data != righthead.data) {
+
 				return false;
 			}
-			temp1 = temp1.next;
-			temp2 = temp2.next;
-
+			lefthead = lefthead.next;
+			righthead = righthead.next;
 		}
-
 		return true;
 	}
 
 	public static void main(String[] args) {
-		LinkedListPalindrome l = new LinkedListPalindrome();
+		PalindromeLinkedList l = new PalindromeLinkedList();
 		l.addLast(1);
 		l.addLast(2);
-		l.addLast(3);
 		l.addLast(2);
 		l.addLast(1);
+//		l.addLast();
 		l.printLinkedList();
-		Node mid = l.findMiddleNode();
-		System.out.println(mid.data);
-		l.reverseHalfLinkedList(mid);
-		l.printLinkedList();
+		boolean flag = checkPalindromeOrNot();
+		System.out.println(flag);
 
 	}
 }
