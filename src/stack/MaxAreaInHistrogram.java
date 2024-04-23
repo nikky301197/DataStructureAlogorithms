@@ -5,14 +5,14 @@ import java.util.Stack;
 public class MaxAreaInHistrogram {
 
 	public static void main(String[] args) {
-		int a[] = { 2, 1, 5, 6, 2, 3 };
-		int n = a.length;
+		int heights[] = { 2, 1, 5, 6, 2, 3 };
+		int n = heights.length;
 		int nsl[] = new int[n];
 		int nsr[] = new int[n];
 		Stack<Integer> s = new Stack<>();
 //	next smaller right ;
 		for (int i = n - 1; i >= 0; i--) {
-			while (!s.isEmpty() && a[i] <= a[s.peek()]) {
+			while (!s.isEmpty() && heights[i] <= heights[s.peek()]) {
 				s.pop();
 			}
 			if (s.isEmpty()) {
@@ -26,7 +26,7 @@ public class MaxAreaInHistrogram {
 //		next smaller left ;
 		s = new Stack<>();
 		for (int i = 0; i < n; i++) {
-			while (!s.isEmpty() && a[i] <= a[s.peek()]) {
+			while (!s.isEmpty() && heights[i] <= heights[s.peek()]) {
 				s.pop();
 			}
 			if (s.isEmpty()) {
@@ -41,7 +41,7 @@ public class MaxAreaInHistrogram {
 		int area = 0;
 		for(int i = 0 ; i<n ; i ++)
 		{
-			int height = a[i];
+			int height = heights[i];
 			int width = nsr[i] - nsl[i] -1;
 			
 			area =  height * width ;
