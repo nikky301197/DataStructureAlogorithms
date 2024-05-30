@@ -5,6 +5,7 @@ public static void main(String[] args) {
 	 String jewels = "aA";
 			 
 	 String stones = "aAAbbbb";
+//	 CharSequence
 	 int count = 0;
 	 for(int i = 0 ; i < jewels.length() ; i ++)
 	 {

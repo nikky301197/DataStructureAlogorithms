@@ -1,4 +1,5 @@
 package divideConquer;
+
 // time complexity 
 // worst case nlogn
 // average case nlogn
